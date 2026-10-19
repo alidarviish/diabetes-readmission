@@ -2,9 +2,9 @@
 
 Some patients have many visits. If one visit of a patient is in the training set
 and another in the test set, the model has already seen that patient: the same age,
-the same medications, often the same diagnoses. It will look better on the test set
-than it would on a truly new patient. So we split the *patients*, and every visit
-follows its patient.
+the same medications, often the same diagnoses, so the test score no longer measures
+what we care about: how the model does on a patient it has never seen. So we split
+the *patients*, and every visit follows its patient.
 """
 import numpy as np
 
