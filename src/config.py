@@ -5,6 +5,7 @@ RAW_DATA = ROOT / "data" / "diabetic_data.csv"
 MODELS_DIR = ROOT / "models"
 MODEL_PATH = MODELS_DIR / "model.joblib"
 METADATA_PATH = MODELS_DIR / "metadata.json"
+REPORTS_DIR = ROOT / "reports"
 
 TARGET = "readmitted_30"
 
