@@ -2,6 +2,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DATA = ROOT / "data" / "diabetic_data.csv"
+MODELS_DIR = ROOT / "models"
+MODEL_PATH = MODELS_DIR / "model.joblib"
+METADATA_PATH = MODELS_DIR / "metadata.json"
 
 TARGET = "readmitted_30"
 

@@ -1,0 +1,33 @@
+{
+  "model": "boosting_50_trees",
+  "trained_on": "2026-10-19",
+  "scikit_learn_version": "1.9.1",
+  "train_visits": 69465,
+  "validation_scores": {
+    "accuracy": 0.8903,
+    "roc_auc": 0.6801,
+    "pr_auc": 0.2393
+  },
+  "all_validation_scores": {
+    "logistic_regression": {
+      "accuracy": 0.8897,
+      "roc_auc": 0.6658,
+      "pr_auc": 0.2213
+    },
+    "boosting_50_trees": {
+      "accuracy": 0.8903,
+      "roc_auc": 0.6801,
+      "pr_auc": 0.2393
+    },
+    "boosting_100_trees": {
+      "accuracy": 0.8901,
+      "roc_auc": 0.6745,
+      "pr_auc": 0.2338
+    },
+    "boosting_200_trees": {
+      "accuracy": 0.8902,
+      "roc_auc": 0.6653,
+      "pr_auc": 0.2268
+    }
+  }
+}
