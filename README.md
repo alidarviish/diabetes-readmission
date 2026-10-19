@@ -57,9 +57,7 @@ Gradient boosting (scikit-learn's `HistGradientBoostingClassifier`, the same met
 as XGBoost) was chosen on the validation set. More trees made it worse: the extra
 trees start fitting noise in the training data.
 
-I also tried averaging logistic regression, gradient boosting and a random forest.
-The difference from gradient boosting alone was within the noise of the validation
-set, so the simpler model was kept.
+Other ideas were tested and did not help; see below.
 
 The trained pipeline (preprocessing + model) is saved in `models/model.joblib`, with
 its scores and scikit-learn version in `models/metadata.json`.
@@ -133,14 +131,37 @@ Two limits are stated with every explanation:
   patient less often would not lower the risk. Which intervention helps is a clinical
   decision.
 
+## What I tried that did not help
+
+Three ideas were compared on the validation set
+([`notebooks/02_improvements.ipynb`](notebooks/02_improvements.ipynb)). Scores on this
+set move by about ±0.01 by chance, so none of them is a real improvement:
+
+| Idea | ROC-AUC | PR-AUC | Training time |
+|---|---|---|---|
+| Current model | 0.680 | 0.239 | ~3 s |
+| + patient history (earlier visits and readmissions) | 0.684 | 0.239 | ~3 s |
+| Tuned gradient boosting (best of 4 settings) | 0.680 | 0.237 | ~10 s |
+| Stacking: logistic regression, boosting, random forest, extra trees | 0.683 | 0.241 | ~6 min |
+
+- **Patient history** adds little because `number_inpatient` already carries the same
+  information. Only *earlier* visits were used: a visit that ended without readmission
+  almost never has a later visit in the data (0.9%), so using later visits would give
+  the answer away.
+- **Stacking** was trained with folds split by patient, to avoid leakage inside the
+  stacking itself. It is 100 times slower and harder to explain, for no measurable gain.
+
+All models learn from the same columns and reach the same limit. Better results would
+need different information, not a more complex model.
+
 ## Limitations
 
 - Prediction is hard with this data: ROC-AUC around 0.68-0.70 is typical for this
   dataset. Much of what drives readmission (support at home, following the treatment)
   is not recorded.
 - The data is from US hospitals in 1999-2008; treatment and coding have changed since.
-- The dataset has no visit dates, so a patient's earlier visits cannot be used safely
-  as history.
+- The dataset has no visit dates. `encounter_id` appears to follow time, but this is
+  inferred, not documented.
 
 ## Project structure
 
@@ -156,7 +177,8 @@ src/
   evaluate.py     step 7: threshold from validation, final scores on test
   fairness.py     step 8: performance by gender, age and race
   explain.py      step 9: feature importance and per-patient explanations
-notebooks/01_explore.ipynb   step 1: exploring the data
+notebooks/01_explore.ipynb       step 1: exploring the data
+notebooks/02_improvements.ipynb  step 10: ideas that did not help
 models/                      saved model and metadata
 reports/                     results, charts and explanations
 tests/                       38 tests, no data needed
