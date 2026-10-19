@@ -1,0 +1,30 @@
+Predicted 30-day readmission risk: 64% (5.6x the average of 11%)
+Main reasons for higher risk (risk change if only this one value were typical; factors overlap, so the numbers do not add up):
+  + Where the patient was discharged to: Discharged/transferred to another short term hospital  (adds about 51 percentage points)
+  + Inpatient stays in previous year: 1  (adds about 41 percentage points)
+  + Main diagnosis group: Other  (adds about 41 percentage points)
+  + How the patient was admitted: HMO Referral  (adds about 32 percentage points)
+Factors lowering risk:
+  - Number of diagnoses: 9  (lowers by about 5 percentage points)
+(Actual outcome: readmitted)
+
+Predicted 30-day readmission risk: 65% (5.8x the average of 11%)
+Main reasons for higher risk (risk change if only this one value were typical; factors overlap, so the numbers do not add up):
+  + Inpatient stays in previous year: 9  (adds about 49 percentage points)
+  + Second diagnosis group: Neoplasms  (adds about 11 percentage points)
+  + Emergency visits in previous year: 3  (adds about 10 percentage points)
+  + Main diagnosis group: Other  (adds about 9 percentage points)
+Factors lowering risk:
+  - Where the patient was discharged to: Discharged/transferred to home with home health service  (lowers by about 1 percentage points)
+(Actual outcome: not readmitted)
+
+Predicted 30-day readmission risk: 15% (1.3x the average of 11%)
+Main reasons for higher risk (risk change if only this one value were typical; factors overlap, so the numbers do not add up):
+  + Insulin: Down  (adds about 2 percentage points)
+  + Where the patient was discharged to: Discharged/transferred to SNF  (adds about 2 percentage points)
+  + Main diagnosis group: Diabetes  (adds about 2 percentage points)
+  + Number of medications: 23  (adds about 1 percentage points)
+Factors lowering risk:
+  - HbA1c test result: Norm  (lowers by about 4 percentage points)
+  - Number of diagnoses: 9  (lowers by about 2 percentage points)
+(Actual outcome: not readmitted)
